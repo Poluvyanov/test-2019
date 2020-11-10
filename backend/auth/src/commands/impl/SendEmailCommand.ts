@@ -3,6 +3,5 @@ export class SendEmailCommand {
         public readonly email: string,
 
     ) {
-        console.log('run SendEmailCommand');
     }
 }

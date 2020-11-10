@@ -5,6 +5,5 @@ export class RegisterUserCommand {
         public readonly roleId: number,
 
     ) {
-        console.log('run RegisterUserCommand');
     }
 }
