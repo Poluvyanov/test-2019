@@ -3,7 +3,7 @@ import { ApplicationModule } from './app';
 import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
-    const app = await NestFactory.create(ApplicationModule)
+    const app = await NestFactory.create(ApplicationModule);
     app.useGlobalPipes(new ValidationPipe());
     await app.listen(process.env.PORT || 3000).then(async () => {
         // tslint:disable-next-line:no-console
@@ -11,4 +11,4 @@ async function bootstrap() {
     });
 }
 
-bootstrap()
+bootstrap();

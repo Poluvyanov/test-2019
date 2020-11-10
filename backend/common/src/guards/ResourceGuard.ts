@@ -1,4 +1,4 @@
-import { CanActivate, ExecutionContext, ForbiddenException, Injectable } from '@nestjs/common'
+import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { GqlExecutionContext } from '@nestjs/graphql';
 import { Reflector } from '@nestjs/core';
 
@@ -16,7 +16,9 @@ export class ResourceGuard implements CanActivate {
             const request = ctx.getContext().request;
             const user = request.user;
             if (user.role.name === checkAccess.possession.toLowerCase()
-                && user.role.permissions.find(u => u.resource === checkAccess.resource && u.action === checkAccess.action)) {
+                && user.role.permissions.find(
+                    u => u.resource === checkAccess.resource
+                        && u.action === checkAccess.action)) {
                 return true;
             }
             return false;

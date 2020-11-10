@@ -21,6 +21,7 @@ export class AuthMiddleware implements NestMiddleware {
             }
             const user = await this.userService.findOneByEmail(decoded.email);
             if (user) {
+                // tslint:disable-next-line
                 req['user'] = user;
             }
 

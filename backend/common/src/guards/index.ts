@@ -1,2 +1,2 @@
-export * from './AccessGuard'
-export * from './ResourceGuard'
+export * from './AccessGuard';
+export * from './ResourceGuard';
