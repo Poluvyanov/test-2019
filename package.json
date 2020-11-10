@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "gateway:dev": "yarn workspace @backend/gateway dev",
+    "typecheck": "lerna run typecheck",
     "lint": "tslint --project tsconfig.json -c tslint.json -t codeFrame backend/**/*.ts"
   },
   "devDependencies": {
@@ -12,7 +13,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "yarn lint && yarn typecheck"
+      "pre-push": "yarn lint"
     }
   },
   "workspaces": [
