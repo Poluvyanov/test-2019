@@ -9,7 +9,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowJs": true,
-    "lib": ["es5", "es6", "es2015", "dom", "es2017", "es2020","esnext", "esnext.asynciterable"],
+    "lib": ["es5", "es6", "es2015", "dom", "es2017","esnext", "esnext.asynciterable"],
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "preserveSymlinks": true
