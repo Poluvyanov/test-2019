@@ -29,6 +29,10 @@
 
 ## Примеры graphql запросов
 
+-HEADERS: 
+Content-Type: application/json
+authorization: Bearer {Токен полученный при авторизации}
+
 1) query {
   me {
     id,
