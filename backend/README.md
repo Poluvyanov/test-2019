@@ -26,3 +26,67 @@
 
 ## Бонусом
 - реализовать 2FA через Google
+
+## Примеры graphql запросов
+
+1) query {
+  me {
+    id,
+    email,
+    profile {
+        firstName
+    }
+   }
+}
+
+
+2) mutation {
+ updateProfile(input:{
+  firstName: "Ilya",
+  lastName: "Poluvyanov",
+}){
+      success,
+     message
+}
+}
+
+3) query {
+  user(id: 2) {
+    id,
+    email,
+    profile {
+        firstName
+    }
+   }
+}
+
+4) query {
+  users {
+      rows {
+          id,
+          email
+      },
+      count
+  }
+}
+
+5) mutation {
+ register(input:{
+  email: "manager@gmail.com",
+  password: "123456789",
+  roleId:2,
+}){
+  success,
+  message
+}
+}
+
+6) mutation {
+ login(input:{
+  email: "manager@gmail.com",
+  password: "123456789"
+}){
+  email,
+  accessToken
+}
+}
