@@ -1,4 +1,12 @@
 {
   "npmClient": "yarn",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "packages": [
+    "backend/common/*",
+    "backend/gateway/*",
+    "backend/roles/*",
+    "backend/users/*",
+    "backend/auth/*"
+  ],
+  "useWorkspaces": true
 }

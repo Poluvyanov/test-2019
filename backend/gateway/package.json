@@ -8,6 +8,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "class-transformer": "0.3.1",
     "@nestjs/common": "6.3.1",
     "@nestjs/core": "6.3.1",
     "@nestjs/typeorm": "6.1.2",

@@ -1,3 +1,3 @@
-import { SetMetadata } from '@nestjs/common'
+import { SetMetadata } from '@nestjs/common';
 
-export const AuthAccess = () => SetMetadata('AuthAccess', [])
+export const AuthAccess = () => SetMetadata('AuthAccess', true)

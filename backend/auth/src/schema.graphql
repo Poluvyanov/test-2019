@@ -1,0 +1,48 @@
+type User {
+  id: ID!
+  email: String!
+  profile: Profile
+  registeredAt: DateTime
+  lastLogonAt: DateTime
+}
+
+type Permissions {
+ resource: String!,
+  action: String!,
+}
+
+
+type RegisterUserErrors {
+  email: String
+  password: String
+}
+
+type RegisterUserResponse {
+  success: Boolean
+  message: String
+}
+
+input RegisterUserInput {
+  email: String!
+  password: String!
+  roleId: Int!
+}
+
+input LoginUserInput {
+  email: String
+  password: String
+}
+
+type LoginUserResponse {
+    email: String
+    accessToken: String
+    expiresIn: String
+}
+
+
+
+type Mutation {
+  register (input: RegisterUserInput!) : RegisterUserResponse!
+  login (input: LoginUserInput!): LoginUserResponse!
+}
+

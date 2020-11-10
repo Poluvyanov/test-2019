@@ -1,1 +1,1 @@
-export * from './RegisterUserCommand'
+export * from './UpdateProfileCommand';

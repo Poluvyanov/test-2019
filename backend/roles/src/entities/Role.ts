@@ -2,8 +2,8 @@ import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
 import { RoleType } from '../enums'
 
 export interface Permission {
-  resource: string
-  action: string
+  resource: string,
+  action: string,
 }
 
 @Entity()

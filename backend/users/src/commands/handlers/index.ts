@@ -1,5 +1,5 @@
-import { RegisterUserHandler } from './RegisterUserHandler'
+import { UpdateProfileHandler } from './UpdateProfileHandler';
 
 export const CommandHandlers = [
-  RegisterUserHandler,
+  UpdateProfileHandler,
 ]

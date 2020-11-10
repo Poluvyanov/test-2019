@@ -1,20 +1,22 @@
-import { NestModule, MiddlewareConsumer, Module } from '@nestjs/common'
-import { GraphQLModule } from '@nestjs/graphql'
-import { TypeOrmModule } from '@nestjs/typeorm'
-import { UsersModule } from '@backend/users'
-import { RolesModule } from '@backend/roles'
-import { APP_GUARD } from '@nestjs/core'
-import { AccessGuard, ResourceGuard } from '@backend/common'
-import { GraphQLDate, GraphQLTime, GraphQLDateTime } from 'graphql-iso-date'
+import { NestModule, MiddlewareConsumer, Module } from '@nestjs/common';
+import { GraphQLModule } from '@nestjs/graphql';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { UsersModule } from '@backend/users';
+import { RolesModule } from '@backend/roles';
+import { APP_GUARD, Reflector } from '@nestjs/core';
+import { AccessGuard, ResourceGuard } from '@backend/common';
+import { GraphQLDate, GraphQLTime, GraphQLDateTime } from 'graphql-iso-date';
+import { AuthModule } from '@backend/auth/src';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: process.env.DB_HOST || 'db',
-      database: process.env.DB_NAME || 'au',
-      username: process.env.DB_USERNAME || 'root',
-      password: process.env.DB_PASSWORD || 'root',
+      host: process.env.DB_HOST || '192.168.99.100',
+      database: process.env.DB_NAME || 'test_2019',
+      username: process.env.DB_USERNAME || 'raccoon',
+      password: process.env.DB_PASSWORD || '12345678',
+      port: +process.env.DB_PORT || 5436,
       entities: [
         '../**/src/**/entities/**.ts',
       ],
@@ -38,10 +40,16 @@ import { GraphQLDate, GraphQLTime, GraphQLDateTime } from 'graphql-iso-date'
       },
       rootValue: ({ req }) => req,
       formatError: error => {
-        return error
+        return error;
       },
       playground: true,
+      context: ({ req }) => {
+        return {
+          request: req,
+        };
+      },
     }),
+    AuthModule,
     UsersModule,
     RolesModule,
   ],
@@ -49,10 +57,12 @@ import { GraphQLDate, GraphQLTime, GraphQLDateTime } from 'graphql-iso-date'
     {
       provide: APP_GUARD,
       useClass: AccessGuard,
+      inject: [Reflector],
     },
     {
       provide: APP_GUARD,
       useClass: ResourceGuard,
+      inject: [Reflector],
     },
   ],
 })
